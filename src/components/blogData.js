@@ -53,10 +53,10 @@ export const blogData = () => {
 
     const searchHash = (key) => {
         searchKey.value = key
-        searchKey.value = searchKey.value.toLowerCase()
+        searchKey.value = searchKey.value.toLowerCase().trim()
         blogs.value = blogsData.value.filter((blog) => {
             for (let i = 0; i < 3; i++) {
-                if (blog.topics[i].toLowerCase().includes(searchKey.value)) {
+                if (blog.topics[i].toLowerCase().trim().includes(searchKey.value)) {
                     return true
                 }
             }
