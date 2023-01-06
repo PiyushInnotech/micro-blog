@@ -1,3 +1,4 @@
+
 import { ref } from "vue"
 
 export const blogData = () => {
@@ -8,12 +9,12 @@ export const blogData = () => {
             title: "learning Vue.js 3",
             description: "I am learning vue.js with composition Api. I feel great",
             like: 20,
-            topics: ["vue 3", "javascript", "composition api"]
+            topics: ["vue-3", "javascript", "composition api"]
         },
         {
             id: "2",
             title: "learning Vuex",
-            description: "Vuex is a state management pattern + library for Vue.js applications.",
+            description: "vuex is a state management pattern + library for Vue.js applications.",
             like: 18,
             topics: ["vue", "vuex", "flux"]
         },
@@ -22,7 +23,7 @@ export const blogData = () => {
             title: "routing with vue router ",
             description: "I am making a complex vue3 app with the help of multi level routing",
             like: 24,
-            topics: ["vue 3", "vue-router"]
+            topics: ["vue-3", "vue-router", "axios"]
         },
         {
             id: "4",
@@ -35,10 +36,12 @@ export const blogData = () => {
 
     const blogs = ref('')
 
+    const searchTag = ref('')
+
     blogs.value = blogsData.value
 
     const increaseLike = (key) => {
-        blogs.value[key].like += 1
+        blogsData.value[key - 1].like += 1
     }
 
     const hashTag = (key) => {
@@ -46,6 +49,18 @@ export const blogData = () => {
             return blog.topics.includes(key)
         })
     }
-    return { blogs, increaseLike, hashTag }
+
+    const searchHash = (key) => {
+
+        blogs.value = blogsData.value.filter((blog) => {
+            for (let i = 0; i < 3; i++) {
+                if (blog.topics[i].includes(key)) {
+                    return true
+                }
+            }
+        })
+    }
+
+    return { blogs, increaseLike, hashTag, searchTag, searchHash }
 
 }

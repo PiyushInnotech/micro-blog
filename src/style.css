@@ -61,3 +61,20 @@
   .likes p{
     margin-left: 4px;
   }
+  form{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  label{
+    font-size: 20px;
+    
+  }
+  input{
+    margin-left: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+    height: 20px;
+    font-size: 15px;
+
+  }
