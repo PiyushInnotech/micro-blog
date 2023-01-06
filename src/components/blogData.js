@@ -37,6 +37,7 @@ export const blogData = () => {
     const blogs = ref('')
 
     const searchTag = ref('')
+    const searchKey = ref('')
 
     blogs.value = blogsData.value
 
@@ -51,9 +52,11 @@ export const blogData = () => {
     }
 
     const searchHash = (key) => {
+        searchKey.value = key
+        searchKey.value = searchKey.value.toLowerCase()
         blogs.value = blogsData.value.filter((blog) => {
             for (let i = 0; i < 3; i++) {
-                if (blog.topics[i].toLowerCase().includes(key)) {
+                if (blog.topics[i].toLowerCase().includes(searchKey.value)) {
                     return true
                 }
             }
