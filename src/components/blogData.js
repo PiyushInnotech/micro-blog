@@ -2,7 +2,7 @@ import { ref } from "vue"
 
 export const blogData = () => {
 
-    const blogs = ref([
+    const blogsData = ref([
         {
             id: "1",
             title: "learning Vue.js 3",
@@ -22,21 +22,30 @@ export const blogData = () => {
             title: "routing with vue router ",
             description: "I am making a complex vue3 app with the help of multi level routing",
             like: 24,
-            topics: ["vue", "vue-router"]
+            topics: ["vue 3", "vue-router"]
         },
         {
             id: "4",
             title: "testing in vue",
             description: "I am writing some test for my vueapp using vue test utilis. it great to learn it",
             like: 17,
-            topics: ["vue 3", "javascript", "testing"]
+            topics: ["vue", "javascript", "testing"]
         }
     ])
 
+    const blogs = ref('')
+
+    blogs.value = blogsData.value
+
     const increaseLike = (key) => {
-       blogs.value[key-1].like += 1
+        blogs.value[key].like += 1
     }
 
-    return { blogs , increaseLike}
+    const hashTag = (key) => {
+        blogs.value = blogsData.value.filter(blog => {
+            return blog.topics.includes(key)
+        })
+    }
+    return { blogs, increaseLike, hashTag }
 
 }

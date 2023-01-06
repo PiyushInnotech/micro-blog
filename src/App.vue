@@ -5,13 +5,13 @@
       <template v-slot:content>{{ blog.description }}</template>
       <template v-slot:footer>
         <div class="likes">
-          <div class="icon" @click="increaseLike(blog.id)">
-          <i class="fa-sharp fa-solid fa-heart"></i>
+          <div class="icon" @click="increaseLike(blogs.indexOf(blog))">
+            <i class="fa-sharp fa-solid fa-heart"></i>
           </div>
           <p>{{ blog.like }}</p>
         </div>
         <div v-for="topic in blog.topics" :key="topic.id" class="topics">
-          #{{ topic }}
+          <span @click="hashTag(topic)"># {{ topic }}</span>
         </div>
       </template>
     </blogCard>
@@ -25,9 +25,9 @@ export default {
   name: "App",
   components: { blogCard },
   setup() {
-    const { blogs , increaseLike } = blogData();
+    const { blogs, increaseLike, hashTag } = blogData();
 
-    return { blogs , increaseLike };
+    return { blogs, increaseLike, hashTag };
   },
 };
 </script>
