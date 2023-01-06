@@ -16,7 +16,7 @@ export const blogData = () => {
             title: "learning Vuex",
             description: "vuex is a state management pattern + library for Vue.js applications.",
             like: 18,
-            topics: ["vue", "vuex", "flux"]
+            topics: ["vue", "Vuex", "flux"]
         },
         {
             id: "3",
@@ -51,10 +51,9 @@ export const blogData = () => {
     }
 
     const searchHash = (key) => {
-
         blogs.value = blogsData.value.filter((blog) => {
             for (let i = 0; i < 3; i++) {
-                if (blog.topics[i].includes(key)) {
+                if (blog.topics[i].toLowerCase().includes(key)) {
                     return true
                 }
             }
